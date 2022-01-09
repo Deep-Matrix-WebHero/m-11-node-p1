@@ -1,9 +1,25 @@
 const express = require("express");
 const app = express();
+// middleware :(https://expressjs.com/en/resources/middleware/cors.html)
+var cors = require("cors");
+app.use(cors());
+app.use(express.json());
+
 const port = process.env.PORT || 5000;
 // 4 digit er jekono sonkha dilei hbe...exm,5000,8080 etc.
+
 app.get("/", (req, res) => {
   res.send("hello! this is node-p1");
+});
+
+// app.METHOD
+app.post("/users", (req, res) => {
+  const newUser = req.body;
+  newUser.id = users.length;
+  users.push(newUser);
+  console.log("hitting the post", req.body);
+  res.send("inside post");
+  res.json(newUser);
 });
 // dynamic api create
 
